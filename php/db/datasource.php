@@ -34,26 +34,12 @@ class DataSource
     private $sqlResult;
     public const CLS = 'cls';
 
-    // public function __construct($host = 'localhost', $port = '8889', $dbName = 'pollapp', $username = 'test_user', $password = 'pwd')
-    // {
-
-    //     $dsn = "mysql:host={$host};port={$port};dbname={$dbName};";
-    //     $this->conn = PDOSingleton::getInstance($dsn, $username, $password);
-    // }
-
-    public function __construct()
+    public function __construct($host = 'localhost', $port = '8889', $dbName = 'pollapp', $username = 'test_user', $password = 'pwd')
     {
-        $host = 'us-cluster-east-01.k8s.cleardb.net'; // データベースサーバーのホスト名
-        $port = 3306; // MySQLのデフォルトポート
-        $username = 'b8f75aafc71668'; // ユーザー名
-        $password = 'cf46bf42'; // パスワード
-        $dbName = 'heroku_aa6bd7a818bf9bd'; // データベース名
 
-        $dsn = "mysql:host={$host};port={$port};dbname={$dbName};charset=utf8mb4;";
+        $dsn = "mysql:host={$host};port={$port};dbname={$dbName};";
         $this->conn = PDOSingleton::getInstance($dsn, $username, $password);
     }
-
-
 
     public function select($sql = "", $params = [], $type = '', $cls = '')
     {
